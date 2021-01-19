@@ -1,9 +1,11 @@
 import "tfplan"
 
+desired_instance_type = "t2.micro"
+
+print("Checking to make sure instance type is, ", desired_instance_type, " type")
+
+configured_instance_type = tfplan.module([]).resources.aws_instance.example.applied.instance_type
+
 main = rule {
-	all tfplan.resources.aws_instance as _, instances {
-		all instances as _, r {
-			(length(r.applied.tags) else 0) >= 1
-		}
-	}
+	desired_instance_type == configured_instance_type
 }
