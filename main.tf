@@ -7,6 +7,6 @@ data "aws_ssm_parameter" "ami_id" {
 }
 resource "aws_instance" "example" {
   ami           = data.aws_ssm_parameter.ami_id.value
-  instance_type = "t3.micro"
+  instance_type = "t2.micro"
 }
 
