@@ -1,4 +1,4 @@
 policy "my-policy" {
-    enforcement_level = "soft-mandatory"
+    enforcement_level = "advisory"
 }
 
