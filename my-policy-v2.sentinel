@@ -1,11 +1,18 @@
 import "tfplan/v2" as tfplan
 
 print("Ensure that instance type is t2.micro")
-required_instance = "t2.micro"
 
-set_instance = tfplan.resources.aws_instance.example.applied.instance_type
-print("The set instance is", set_instance)
-instance_type_rule = rule { set_instance == required_instance }
+#required_instance = "t2.micro"
+
+#set_instance = tfplan.resources.aws_instance.example.applied.instance_type
+#print("The set instance is", set_instance)
+#instance_type_rule = rule { set_instance == required_instance }
+
+instance_type_rule = rule {
+	all tfplan.resources.aws_instance as _, instance {
+		instance.instance_type is "t2.micro"
+	}
+}
 
 main = rule {
 	instance_type_rule
