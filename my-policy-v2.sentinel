@@ -1,8 +1,11 @@
 import "tfplan/v2" as tfplan
 
 print("Ensure that instance type is t2.micro")
+required_instance = "t2.micro"
 
-instance_type_rule = rule { tfplan.resources.aws_instance.example[0].diff["instance_type"].new is "t2.micro" }
+set_instance = tfplan.resources.aws_instance.example[0].diff.instance_type
+print("The set instance is", set_instance)
+instance_type_rule = rule { set_instance == required_instance }
 
 main = rule {
 	instance_type_rule
