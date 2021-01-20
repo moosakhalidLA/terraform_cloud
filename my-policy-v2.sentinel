@@ -1,0 +1,7 @@
+import "tfplan/v2" as tfplan
+
+instance_type_rule = rule { tfplan.resources.aws_instance.example[0].diff.instance_type is "t2.micro" }
+
+main = rule {
+	instance_type_rule
+}
