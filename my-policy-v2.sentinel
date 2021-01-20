@@ -9,7 +9,7 @@ print("Ensure that instance type is t2.micro")
 #instance_type_rule = rule { set_instance == required_instance }
 
 instance_type_rule = rule {
-	all tfplan.resources.aws_instance as _, instance {
+	all tfplan.module([]).resources.aws_instance as _, instance {
 		instance.instance_type is "t2.micro"
 	}
 }
