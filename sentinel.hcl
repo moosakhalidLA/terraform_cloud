@@ -1,4 +1,4 @@
-policy "my-policy" {
+policy "my-policy-v2" {
     enforcement_level = "advisory"
 }
 
