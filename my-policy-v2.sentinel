@@ -8,14 +8,13 @@ print("Ensure that instance type is t2.micro")
 #print("The set instance is", set_instance)
 #instance_type_rule = rule { set_instance == required_instance }
 
-instance_type_rule = rule {
-	all filter tfplan.resource_changes as _, rc {
-		rc.mode is "managed" and
-			rc.type is "aws_instance"
-	} as _, rc {
-		rc.after.instance_type is "t2.micro" else false
-	}
+instance_type_rule = all filter tfplan.resource_changes as _, rc {
+	rc.mode is "managed" and
+		rc.type is "aws_instance"
+} as _, rc {
+	rc.after.instance_type is "t2.micro"
 }
+
 main = rule {
-	instance_type_rule else false
+	instance_type_rule
 }
