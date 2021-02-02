@@ -10,11 +10,11 @@ print("Ensure that instance type is t2.micro")
 
 instance_type_rule = all filter tfplan.resource_changes as _, rc {
 	rc.mode is "managed" and
-		rc.type is "aws_instance"
+		rc.type is "aws_instance" and
+		rc.change.actions is ["create", "update"]
 } as _, rc {
 	rc.after.instance_type is "t2.micro"
 }
-
 main = rule {
-	instance_type_rule
+	length(instance_type_rule) > 0
 }
