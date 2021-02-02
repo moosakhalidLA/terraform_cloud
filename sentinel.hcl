@@ -1,5 +1,5 @@
 policy "my-policy-v2" {
-    enforcement_level = "advisory"
+    enforcement_level = "hard-mandatory"
 }
 
 policy "aws-cis-4.1-networking-deny-public-ssh-acl-rules" {
