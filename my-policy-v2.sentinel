@@ -13,7 +13,7 @@ instance_type_rule = all filter tfplan.resource_changes as _, rc {
 		rc.type is "aws_instance" and
 		rc.change.actions is ["create", "update"]
 } as _, rc {
-	rc.after.instance_type is "t2.micro"
+	rc.after.instance_type is "t3.micro"
 }
 main = rule {
 	instance_type_rule is true
