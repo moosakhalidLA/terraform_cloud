@@ -13,7 +13,7 @@ instance_type_rule = rule {
 		rc.type is "aws_instance" and
 			rc.mode is "managed"
 	} as _, rc {
-		rc.after.instance_type is "t2.micro"
+		rc.before.instance_type is "t2.micro"
 	}
 }
 
