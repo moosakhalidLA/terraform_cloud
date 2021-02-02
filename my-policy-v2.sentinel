@@ -16,5 +16,5 @@ instance_type_rule = all filter tfplan.resource_changes as _, rc {
 	rc.after.instance_type is "t2.micro"
 }
 main = rule {
-	length(instance_type_rule) > 0
+	instance_type_rule
 }
