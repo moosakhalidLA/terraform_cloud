@@ -13,7 +13,7 @@ resource "aws_vpc" "my-vpc" {
 resource "aws_instance" "example" {
   ami             = data.aws_ssm_parameter.ami_id.value
   instance_type   = "t2.micro"
-  security_groups = [aws_security_group.my-sg.id]
+  security_groups = [aws_security_group.my-sg.name]
 }
 
 resource "aws_subnet" "my-subnet" {
